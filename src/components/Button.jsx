@@ -6,7 +6,12 @@ function Button({ children, ...props }) {
 			className={`group cursor-pointer relative bg-transparent text-sm text-center text-white ${props.className}`}
 		>
 			<div className="bg-black px-7 py-2 w-full h-full group-hover:rounded-3xl transition-all duration-300 ease-linear">
-				<button {...props}>{children}</button>
+				<button
+					className={`${props.className} border-none bg-transparent`}
+					{...props}
+				>
+					{children}
+				</button>
 			</div>
 			<div className="group-hover:invisible transition-all duration-150 ease-linear">
 				<span
