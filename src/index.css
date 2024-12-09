@@ -1,7 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Cousine:ital,wght@0,400;0,700;1,400;1,700&family=Jersey+10&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* * { */
-	/* font-family: "Jersey 10", "Chivo" sans-serif; */
-/* } */
+h1 {
+	font-family: "Jersey 10", sans-serif;
+}
+
+@layer utilities {
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+}

@@ -15,8 +15,33 @@ export default {
 				"light-grey": "#eaeaea",
 			},
 			fontFamily: {
-				chivo: ["Jersery 10", "sans-serif"],
-				jersery: ["Chivo", "sans-serif"],
+				chivo: ["Chivo", "sans-serif"],
+				jersey: ["Jersey 10", "sans-serif"],
+				cousine: ["cousine", "sans-serif"],
+			},
+			keyframes: {
+				fadeInUp: {
+					"0%": { opacity: "0", transform: "translateY(10px)" },
+					"100%": { opacity: "1", transform: "translateY(0)" },
+				},
+				fadeIn: {
+					to: { opacity: 0.5 },
+					// "100%": { opacity: "1" },
+				},
+			},
+			animation: {
+				fadeInUp: "fadeInUp 0.7s ease-out",
+				fadeIn: "fadeIn 0.7s ease-out",
+			},
+			backgroundImage: {
+				header: "url(./assets/header.png)",
+				headersm: "url(./assets/header-sm.png)",
+				blackbtn: "url(./assets/blackbutton.png)",
+				lightbluebtn: "url(./assets/lightbluebutton.png)",
+				borderedbtn: "url(./assets/borderered.png)",
+				bluebtn: "url(./assets/bluebtn.png)",
+				speakerlayer: "url(./assets/speaker-layer.png)",
+				shirtwhitebg: "url(./assets/shirt-bg.png)",
 			},
 		},
 	},
