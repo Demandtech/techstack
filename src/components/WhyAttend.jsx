@@ -23,7 +23,7 @@ function WhyAttend() {
 					initial={{ width: 0, opacity: 0 }}
 					animate={{ opacity: isInView ? 1 : 0, width: isInView ? 190 : 0 }}
 					transition={{
-						delay: 0.04,
+						duration: 0.4,
 					}}
 					className="border-t-[3px] border-dashed max-w-32 md:max-w-48 border-black mx-auto"
 				/>
@@ -51,7 +51,10 @@ function WhyAttend() {
 								</h5>
 								<p className="text-sm lg:text-lg font-normal">
 									{y.text.split(" ").map((word, wordIndex) => (
-										<span key={wordIndex} className="inline-block leading-7">
+										<span
+											key={wordIndex}
+											className="inline-block leading-5 lg:leading-7"
+										>
 											{word.split("").map((char, charIndex) => (
 												<motion.span
 													key={charIndex}

@@ -38,17 +38,16 @@ function Shirt() {
 				<div className="w-full overflow-hidden lg:w-1/2 relative">
 					<div
 						style={{ backgroundSize: "100% 100%" }}
-						className="w-full lg:bg-shirtwhitebg min-h-[340px] lg:min-h-[550px]"
+						className="w-full bg-shirtwhitebg min-h-[430px] lg:min-h-[550px]"
 					>
 						{shirts.map((shirt, index) => (
 							<div
 								style={{
 									background: `url(${shirt}) no-repeat center`,
 									backgroundSize: "100% 100%",
-									// transform: "translateY(20)",
 									transform: `translateX(${100 * (index - currentIndex)}%)`,
 								}}
-								className="absolute left-0 top-0 w-full h-full transition-transform duration-300 ease-in-out lg:translate-y-3"
+								className="absolute left-0 top-0 w-full h-full transition-transform duration-300 ease-in-out"
 								key={index}
 							></div>
 						))}

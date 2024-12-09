@@ -26,7 +26,6 @@ export default {
 				},
 				fadeIn: {
 					to: { opacity: 0.5 },
-					// "100%": { opacity: "1" },
 				},
 			},
 			animation: {
@@ -42,6 +41,9 @@ export default {
 				bluebtn: "url(./assets/bluebtn.png)",
 				speakerlayer: "url(./assets/speaker-layer.png)",
 				shirtwhitebg: "url(./assets/shirt-bg.png)",
+				basic: "url(./assets/ticket1.png)",
+				vip: "url(./assets/ticket2.png)",
+				vvip: "url(./assets/ticket3.png)",
 			},
 		},
 	},

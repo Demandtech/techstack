@@ -1,13 +1,41 @@
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+
 import { speakers } from "../data";
 import Button from "./Button";
-import { useRef } from "react";
 
 function Speakers() {
 	const sectionRef = useRef(null);
 	const isInView = useInView(sectionRef);
+	const [currentIndex, setCurrentIndex] = useState(0);
 
-	console.log(isInView);
+	// console.log(isInView);
+	const handleScroll = () => {
+		const container = sectionRef.current;
+		if (!container) return;
+
+		const children = container.children;
+
+		let closestIndex = 0;
+		let closestOffset = Infinity;
+
+		for (let i = 0; i < children.length; i++) {
+			const child = children[i];
+			const offset = Math.abs(
+				child.getBoundingClientRect().left -
+					container.getBoundingClientRect().left
+			);
+
+			if (offset < closestOffset) {
+				closestOffset = offset;
+				closestIndex = i;
+			}
+
+			setCurrentIndex(closestIndex);
+		}
+	};
+
+	// console.log(currentIndex);
 
 	return (
 		<section id="speakers" className="bg-light-grey">
@@ -23,11 +51,12 @@ function Speakers() {
 				<div>
 					<div
 						ref={sectionRef}
-						className="overflow-auto no-scrollbar gap-5 flex flex-nowrap lg:grid lg:grid-cols-4"
+						onScroll={handleScroll}
+						className="snap-x overflow-auto no-scrollbar gap-5 flex flex-nowrap lg:grid lg:grid-cols-4 px-3 lg:px-0"
 					>
 						{speakers.map((speaker, index) => (
 							<div
-								className="min-h-[430px] lg:min-h-[330px] pb-8 lg:py-5 px-4 relative flex flex-col min-w-full md:min-w-44"
+								className="snap-center min-h-[430px] lg:min-h-[330px] pb-8 lg:py-5 px-4 relative flex flex-col min-w-full md:min-w-44"
 								key={index}
 								style={{
 									background: `url(${speaker.image}) no-repeat center`,
@@ -65,7 +94,7 @@ function Speakers() {
 							<div
 								key={index}
 								className={`w-3 h-3 rounded-full ${
-									index === 0 ? "bg-blue" : "bg-grey"
+									index === currentIndex ? "bg-blue" : "bg-grey"
 								}`}
 							/>
 						))}

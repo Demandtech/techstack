@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import Button from "./Button";
 import { motion } from "framer-motion";
@@ -6,11 +6,30 @@ import { MenuBar } from "./Svgs";
 
 export default function Header() {
 	const [openMenu, setOpenMenu] = useState(false);
+	const [isSticky, setIsSticky] = useState(false);
+	const [scrollPos, setScrollPos] = useState(0);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const currentScrollPos = window.scrollY;
+			const heroHeight = document.getElementById("hero")?.offsetHeight || 0;
+
+			const scrolledPastThreshold = currentScrollPos > heroHeight;
+
+			setIsSticky(scrolledPastThreshold && currentScrollPos < scrollPos);
+			setScrollPos(currentScrollPos);
+		};
+		window.addEventListener("scroll", handleScroll);
+
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, [scrollPos]);
 
 	return (
 		<header
 			id="header"
-			className="sticky z-50 backdrop-blur-lg bg-transparent pt-5 md:pt-10 top-0 text-white w-full"
+			className={`${
+				isSticky ? "sticky z-50" : ""
+			} backdrop-blur-lg bg-transparent pt-5 md:pt-10 top-0 text-white w-full transition-all duration-300 ease-linear`}
 		>
 			<motion.div
 				style={{
@@ -33,6 +52,7 @@ export default function Header() {
 							<MenuBar />
 						</button>
 					</div>
+					{/* Mobile Nav */}
 					<motion.nav
 						initial={{ height: 0 }}
 						animate={{ height: openMenu ? 250 : 0 }}
@@ -48,7 +68,7 @@ export default function Header() {
 							<li>
 								<a href="#contact">CONTACT</a>
 							</li>
-							<li className="cursor-pointer">
+							<li className="cursor-pointer max-w-[170px]">
 								<Button aria-label="ticket button" color="black">
 									GET TICKETS
 								</Button>

@@ -11,16 +11,16 @@ function Button({ ...props }) {
 				}}
 				className={`${
 					props.color === "black"
-						? "bg-blackbtn"
+						? "bg-blackbtn hover:bg-black"
 						: props.color === "bordered"
-						? "bg-borderedbtn"
+						? "bg-borderedbtn hover:bg-none border border-transparent hover:border-white"
 						: props.color === "lightblue"
-						? "bg-lightbluebtn"
-						: "bg-bluebtn"
-				}  font-semibold bg-no-repeat px-5 md:px-7 py-2 w-full h-full group-hover:rounded-3xl transition-all duration-300 ease-linear`}
+						? "bg-lightbluebtn hover:bg-light-blue"
+						: "bg-bluebtn hover:bg-blue"
+				} hover:opacity-85 font-semibold bg-no-repeat px-5 md:px-7 py-2 w-full h-full group-hover:rounded-3xl transition-all duration-300 ease-linear`}
 			>
 				<button
-					className={`${props.className} border-none bg-transparent text-sm md:text-base text-nowrap`}
+					className={`${props.className} active:opacity-70 border-none bg-transparent text-sm md:text-base text-nowrap`}
 					{...props}
 				>
 					{props.children}

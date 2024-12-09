@@ -16,12 +16,12 @@ export default function Hero() {
 			className={`bg-black text-white py-10 lg:py-20`}
 		>
 			<div className="max-w-[800px] space-y-10 mx-auto">
-				<div className="space-y-7">
+				<div className="space-y-4 lg:space-y-7">
 					<motion.h1
 						initial={{ opacity: 0, scale: 0.5 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ duration: 0.5 }}
-						className="font-jersey text-[2.5rem] px-2 lg:text-8xl text-center"
+						className="leading-10 font-jersey text-[2.7rem] px-2 lg:text-8xl text-center"
 					>
 						TechStack;{" "}
 						<span
@@ -44,9 +44,9 @@ export default function Hero() {
 						}}
 						className="border-t-2 border-dashed border-white mx-auto"
 					/>
-					<p className="leading-7 font-cousine font-[300] text-center text-xs sm:text-sm md:text-[1.35rem] px-2">
+					<p className="font-cousine font-[300] text-center text-xs md:text-[1.35rem] px-2">
 						{text.split(" ").map((word, wordIndex) => (
-							<span key={wordIndex} className="inline-block leading-7">
+							<span key={wordIndex} className="inline-block leading-5 lg:leading-7">
 								{word.split("").map((char, charIndex) => (
 									<motion.span
 										key={charIndex}
