@@ -44,6 +44,8 @@ export default {
 				basic: "url(./assets/ticket1.png)",
 				vip: "url(./assets/ticket2.png)",
 				vvip: "url(./assets/ticket3.png)",
+				footer: "url(./assets/footer-large.png)",
+				footersm: "url(./assets/footer-mobile.png)",
 			},
 		},
 	},

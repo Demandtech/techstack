@@ -1,8 +1,15 @@
-export { default as Hero } from "./Hero";
-export { default as Header } from "./Header";
+/** UI */
 export { default as Button } from "./Button";
-export { default as Venue } from "./Venue";
-export { default as Why } from "./WhyAttend";
-export { default as Speakers } from "./Speakers";
-export { default as Tickets } from "./Tickets";
-export { default as Shirts } from "./Shirt";
+
+/** SECTIONS */
+export { default as Hero } from "./sections/Hero";
+export { default as Venue } from "./sections/Venue";
+export { default as Sponsors } from "./sections/Sponsors";
+export { default as Why } from "./sections/WhyAttend";
+export { default as Shirts } from "./sections/Shirt";
+export { default as Tickets } from "./sections/Tickets";
+export { default as Speakers } from "./sections/Speakers";
+
+/** LAYOUTS */
+export { default as Header } from "./layouts/Header";
+export { default as Footer } from "./layouts/Footer";

@@ -6,13 +6,27 @@ import shirt_1 from "./assets/shirt1.png";
 import shirt_2 from "./assets/shirt1.png";
 import shirt_3 from "./assets/shirt1.png";
 import shirt_4 from "./assets/shirt1.png";
+import sponsor1 from "./assets/sponsors/sponsor1.svg";
+import sponsor2 from "./assets/sponsors/sponsor2.svg";
+import sponsor3 from "./assets/sponsors/sponsor3.svg";
+import sponsor4 from "./assets/sponsors/sponsor4.svg";
+import sponsor5 from "./assets/sponsors/sponsor5.svg";
+import sponsor6 from "./assets/sponsors/sponsor6.svg";
+import sponsor7 from "./assets/sponsors/sponsor7.svg";
+import sponsor8 from "./assets/sponsors/sponsor8.svg";
 
-export const shirts = [
-	shirt_1,
-	shirt_2,
-	shirt_3,
-	shirt_4
+export const sponsors = [
+	sponsor4,
+	sponsor7,
+	sponsor8,
+	sponsor2,
+	sponsor5,
+	sponsor6,
+	sponsor3,
+	sponsor1,
 ];
+
+export const shirts = [shirt_1, shirt_2, shirt_3, shirt_4];
 
 export const tickets = [
 	{

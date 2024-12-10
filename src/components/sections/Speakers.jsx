@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
-import { speakers } from "../data";
-import Button from "./Button";
+import { speakers } from "../../data";
+import Button from "../Button";
 
 function Speakers() {
 	const sectionRef = useRef(null);

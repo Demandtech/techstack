@@ -1,11 +1,15 @@
-import Button from "./Button";
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 
-import { shirts } from "../data";
-import { ChevronLeft, ChevronRight, Dashed } from "./Svgs";
-import { useState } from "react";
+import Button from "../Button";
+
+import { shirts } from "../../data";
+import { ChevronLeft, ChevronRight, Dashed } from "../Svgs";
 
 function Shirt() {
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const sectionRef = useRef(null);
+	const isInView = useInView(sectionRef, { once: false });
 
 	const handleNext = () => {
 		setCurrentIndex((prev) => {
@@ -21,19 +25,46 @@ function Shirt() {
 
 	return (
 		<section
+			ref={sectionRef}
 			id="shirts"
-			className="py-12 bg-light-teal relative overflow-hidden"
+			className="py-16 bg-light-teal relative overflow-hidden"
 		>
-			<div className="max-w-[90%] mx-auto flex gap-7 justify-between flex-col lg:flex-row">
+			<div className="max-w-[90%] mx-auto flex gap-10 justify-between flex-col lg:flex-row">
 				<div className="lg:pt-10">
-					<h3 className="font-cousine mb-3 lg:mb-7 text-2xl lg:text-4xl">
-						Get Your Own <br /> 0fficial TechStack; <br /> Devs2Devs shirt
-					</h3>
-					<div className="max-w-[180px]">
+					<div className="font-cousine mb-7 lg:mb-7 text-2xl lg:text-4xl">
+						<motion.h3
+							initial={{ opacity: 0, x: -10 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ delay: 0.01, duration: 0.3 }}
+						>
+							Get Your Own
+						</motion.h3>
+						<motion.h3
+							initial={{ opacity: 0, x: -20 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ delay: 0.02, duration: 0.4 }}
+						>
+							0fficial TechStack;
+						</motion.h3>{" "}
+						<motion.h3
+							initial={{ opacity: 0, x: -30 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ delay: 0.03, duration: 0.4 }}
+						>
+							{" "}
+							Devs2Devs shirt
+						</motion.h3>
+					</div>
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: isInView && 1, y: isInView && 0 }}
+						transition={{ delay: 0.04, duration: 0.3 }}
+						className="max-w-[180px]"
+					>
 						<Button btnwrapperclass="bg-blue" boxclass="bg-light-teal">
 							PAY FOR T-SHIRT
 						</Button>
-					</div>
+					</motion.div>
 				</div>
 				<div className="w-full overflow-hidden lg:w-1/2 relative">
 					<div

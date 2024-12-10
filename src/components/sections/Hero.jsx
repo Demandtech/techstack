@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import Button from "./Button";
-import img from "../assets/dev.png";
+import Button from "../Button";
+import img from "../../assets/dev.png";
 import { motion } from "framer-motion";
 
 const text =
@@ -13,12 +13,12 @@ export default function Hero() {
 		<section
 			ref={heroRef}
 			id="hero"
-			className={`bg-black text-white py-10 lg:py-20`}
+			className={`bg-black text-white py-16 lg:py-20`}
 		>
 			<div className="max-w-[800px] space-y-10 mx-auto">
 				<div className="space-y-4 lg:space-y-7">
 					<motion.h1
-						initial={{ opacity: 0, scale: 0.5 }}
+						initial={{ opacity: 0, scale: 0.8 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ duration: 0.5 }}
 						className="leading-10 font-jersey text-[2.7rem] px-2 lg:text-8xl text-center"
@@ -41,12 +41,21 @@ export default function Hero() {
 						animate={{ opacity: 1, width: "160px" }}
 						transition={{
 							delay: 0.05,
+							duration: 0.3,
 						}}
 						className="border-t-2 border-dashed border-white mx-auto"
 					/>
-					<p className="font-cousine font-[300] text-center text-xs md:text-[1.35rem] px-2">
+					<motion.p
+						initial={{ opacity: 0, scale: 0.8 }}
+						animate={{ scale: 1, opacity: 1 }}
+						transition={{ duration: 0.5 }}
+						className="font-cousine font-[300] text-center text-xs md:text-[1.35rem] px-2"
+					>
 						{text.split(" ").map((word, wordIndex) => (
-							<span key={wordIndex} className="inline-block leading-5 lg:leading-7">
+							<span
+								key={wordIndex}
+								className="inline-block leading-5 lg:leading-7"
+							>
 								{word.split("").map((char, charIndex) => (
 									<motion.span
 										key={charIndex}
@@ -63,16 +72,28 @@ export default function Hero() {
 								&nbsp;
 							</span>
 						))}
-					</p>
+					</motion.p>
 				</div>
 
 				<div className="flex justify-center gap-5 lg:gap-10">
-					<Button className="text-white " color="bordered">
-						GET TICKET
-					</Button>
-					<Button className="text-black " color="lightblue">
-						BECOME A SPONSOR
-					</Button>
+					<motion.div
+						initial={{ opacity: 0, x: -10, y: 5 }}
+						animate={{ opacity: 1, x: 0, y: 0 }}
+						transition={{ duration: 0.5 }}
+					>
+						<Button className="text-white " color="bordered">
+							GET TICKET
+						</Button>
+					</motion.div>
+					<motion.div
+						initial={{ opacity: 0, x: 10, y: -5 }}
+						animate={{ opacity: 1, x: 0, y: 0 }}
+						transition={{ duration: 0.5 }}
+					>
+						<Button className="text-black " color="lightblue">
+							BECOME A SPONSOR
+						</Button>
+					</motion.div>
 				</div>
 			</div>
 		</section>

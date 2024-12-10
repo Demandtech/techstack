@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
-import { tickets } from "../data";
-import Button from "./Button";
-import { NairaIcon } from "./Svgs";
+import { tickets } from "../../data";
+import Button from "../Button";
+import { NairaIcon } from "../Svgs";
 import { useRef } from "react";
 
 export default function Ticket() {

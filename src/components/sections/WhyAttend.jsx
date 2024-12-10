@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import React, { useRef } from "react";
-import { why } from "../data";
+import { why } from "../../data";
 
 function WhyAttend() {
 	const sectionRef = useRef(null);

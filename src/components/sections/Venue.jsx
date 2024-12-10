@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import Button from "./Button";
-import arrowDown from "../assets/arrow-down.svg";
+import Button from "../Button";
+import arrowDown from "../../assets/arrow-down.svg";
 
 const subheader =
 	"1234 Tech Avenue, Suite 500, Innovation District, Silicon Valley, CA94043, Nigeria.";
