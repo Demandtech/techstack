@@ -14,16 +14,22 @@ export default function Ticket() {
 			<div className="py-16 max-w-[95%] lg:max-w-[90%] mx-auto">
 				<div className="text-white lg:max-w-[50%] font-cousine px-3 lg:px-0">
 					<motion.h3
-						initial={{ y: 50, opacity: 0 }}
-						animate={{ y: wrapperInView && 0, opacity: wrapperInView && 1 }}
+						initial={{ y: 30, opacity: 0 }}
+						animate={{
+							y: wrapperInView ? 0 : 30,
+							opacity: wrapperInView ? 1 : 0,
+						}}
 						transition={{ duration: 0.3 }}
 						className="text-2xl lg:text-4xl mb-2"
 					>
 						GET TICKETS
 					</motion.h3>
 					<motion.p
-						initial={{ x: -50, opacity: 0 }}
-						animate={{ x: wrapperInView && 0, opacity: wrapperInView && 1 }}
+						initial={{ x: -30, opacity: 0 }}
+						animate={{
+							x: wrapperInView ? 0 : -30,
+							opacity: wrapperInView ? 1 : 0,
+						}}
 						transition={{ duration: 0.3 }}
 						className="text-sm md:text-base leading-6"
 					>
@@ -66,8 +72,8 @@ export default function Ticket() {
 										<motion.li
 											initial={{ x: -30 + index * 10, opacity: 0 }}
 											animate={{
-												x: wrapperInView && 0,
-												opacity: wrapperInView && 1,
+												x: wrapperInView ? 0 : -30 + index * 10,
+												opacity: wrapperInView ? 1 : 0,
 											}}
 											transition={{
 												delay: 0.03 * index,
@@ -97,8 +103,8 @@ export default function Ticket() {
 								<motion.div
 									initial={{ y: 30, opacity: 0 }}
 									animate={{
-										y: wrapperInView && 0,
-										opacity: wrapperInView && 1,
+										y: wrapperInView ? 0 : 30,
+										opacity: wrapperInView ? 1 : 0,
 									}}
 									transition={{ duration: 0.3 }}
 									className="mt-auto mx-auto"

@@ -57,7 +57,7 @@ function Shirt() {
 					</div>
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: isInView && 1, y: isInView && 0 }}
+						animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
 						transition={{ delay: 0.04, duration: 0.3 }}
 						className="max-w-[180px]"
 					>

@@ -13,8 +13,8 @@ function Sponsors() {
 					</h3>
 				</div>
 				<div className=" flex flex-wrap justify-center gap-6 lg:gap-12">
-					{sponsors.map((sponsor) => (
-						<div className="max-w-[100px] md:max-w-[200px]">
+					{sponsors.map((sponsor, index) => (
+						<div key={index} className="max-w-[100px] md:max-w-[200px]">
 							<img src={sponsor} alt="Sponsor" />
 						</div>
 					))}

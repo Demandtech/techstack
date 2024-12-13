@@ -9,7 +9,6 @@ function Speakers() {
 	const isInView = useInView(sectionRef);
 	const [currentIndex, setCurrentIndex] = useState(0);
 
-	// console.log(isInView);
 	const handleScroll = () => {
 		const container = sectionRef.current;
 		if (!container) return;
@@ -35,7 +34,21 @@ function Speakers() {
 		}
 	};
 
-	// console.log(currentIndex);
+	const handlePaginationClick = (index) => {
+		const container = sectionRef.current;
+
+		if (container) {
+			const children = container.children;
+			const targetChild = children[index];
+
+			container.scrollTo({
+				left: targetChild.offsetLeft,
+				behavior: "smooth",
+			});
+		}
+
+		setCurrentIndex(index);
+	};
 
 	return (
 		<section id="speakers" className="bg-light-grey">
@@ -91,9 +104,10 @@ function Speakers() {
 					</div>
 					<div className="flex relative z-10 justify-center gap-2 -mt-7 md:hidden">
 						{speakers.map((_, index) => (
-							<div
+							<button
+								onClick={() => handlePaginationClick(index)}
 								key={index}
-								className={`w-3 h-3 rounded-full ${
+								className={`w-[10px] h-[10px] rounded-full cursor-pointer hover:opacity-50 transition-all duration-150 ease-linear ${
 									index === currentIndex ? "bg-blue" : "bg-grey"
 								}`}
 							/>

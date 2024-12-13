@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import logo from "../../assets/logo.png";
 import Button from "../Button";
 import { motion } from "framer-motion";
@@ -9,28 +9,53 @@ export default function Header() {
 	const [openMenu, setOpenMenu] = useState(false);
 	const [isSticky, setIsSticky] = useState(false);
 	const [scrollPos, setScrollPos] = useState(0);
-	const pathname = useLocation().pathname;
+	const headerRef = useRef(null);
+
+	const handleScroll = useCallback(() => {
+		if (openMenu) return;
+		const currentScrollPos = window.scrollY;
+
+		if (currentScrollPos > 400 && currentScrollPos < scrollPos) {
+			setIsSticky(true);
+		} else {
+			setIsSticky(false);
+		}
+
+		setScrollPos(currentScrollPos);
+	}, [openMenu, scrollPos]);
 
 	useEffect(() => {
-		const handleScroll = () => {
-			const currentScrollPos = window.scrollY;
-			const heroHeight = document.getElementById("hero")?.offsetHeight || 0;
-
-			const scrolledPastThreshold = currentScrollPos > heroHeight;
-
-			setIsSticky(scrolledPastThreshold && currentScrollPos < scrollPos);
-			setScrollPos(currentScrollPos);
-		};
 		window.addEventListener("scroll", handleScroll);
 
 		return () => window.removeEventListener("scroll", handleScroll);
-	}, [scrollPos]);
+	}, [scrollPos, openMenu]);
+
+	useEffect(() => {
+		const handleOutsideClick = (e) => {
+			if (headerRef.current && !headerRef.current.contains(e.target)) {
+				setOpenMenu(false);
+			}
+		};
+
+		if (openMenu) {
+			document.body.style.overflow = "hidden";
+			document.addEventListener("mousedown", handleOutsideClick); // For desktop
+			document.addEventListener("touchstart", handleOutsideClick); // For mobile
+		} else {
+			document.body.style.overflow = "";
+		}
+
+		return () => {
+			document.body.style.overflow = "";
+		};
+	}, [openMenu]);
 
 	return (
 		<header
+			ref={headerRef}
 			id="header"
 			className={`${
-				isSticky ? "sticky z-50" : " static"
+				isSticky ? "sticky z-50" : "static"
 			} backdrop-blur-lg bg-transparent pt-5 md:pt-10 top-0 text-white w-full transition-all duration-300 ease-linear`}
 		>
 			<div
@@ -63,13 +88,13 @@ export default function Header() {
 						className={`overflow-hidden md:px-0 bg-light-blue`}
 					>
 						<ul className="md:hidden border-t-4 px-2 md:border-b-0 border-black font-chivo py-5 lg:py-0 text-black flex flex-col gap-8">
-							<li>
+							<li onClick={() => setOpenMenu(false)}>
 								<Link to="#speakers">SPEAKERS</Link>
 							</li>
-							<li>
+							<li onClick={() => setOpenMenu(false)}>
 								<Link to="#sponsors">SPONSORS</Link>
 							</li>
-							<li>
+							<li onClick={() => setOpenMenu(false)}>
 								<NavLink className="link" to="/contact">
 									CONTACT
 								</NavLink>
@@ -83,13 +108,13 @@ export default function Header() {
 					</motion.nav>
 					<nav>
 						<ul className="hidden md:flex px-2 md:border-b-0 border-black font-chivo py-5 lg:py-0 text-black  items-center flex-row gap-8">
-							<li>
+							<li onClick={() => setOpenMenu(false)}>
 								<Link to="/#speakers">SPEAKERS</Link>
 							</li>
-							<li>
+							<li onClick={() => setOpenMenu(false)}>
 								<Link to="/#sponsors">SPONSORS</Link>
 							</li>
-							<li>
+							<li onClick={() => setOpenMenu(false)}>
 								<NavLink className="link" to="/contact">
 									CONTACT
 								</NavLink>
