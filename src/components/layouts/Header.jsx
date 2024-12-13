@@ -89,10 +89,10 @@ export default function Header() {
 					>
 						<ul className="md:hidden border-t-4 px-2 md:border-b-0 border-black font-chivo py-5 lg:py-0 text-black flex flex-col gap-8">
 							<li onClick={() => setOpenMenu(false)}>
-								<Link to="#speakers">SPEAKERS</Link>
+								<Link to="/#speakers">SPEAKERS</Link>
 							</li>
 							<li onClick={() => setOpenMenu(false)}>
-								<Link to="#sponsors">SPONSORS</Link>
+								<Link to="/#sponsors">SPONSORS</Link>
 							</li>
 							<li onClick={() => setOpenMenu(false)}>
 								<NavLink className="link" to="/contact">
