@@ -9,19 +9,16 @@ import { ChevronLeft, ChevronRight, Dashed } from "../Svgs";
 function Shirt() {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const sectionRef = useRef(null);
-	const isInView = useInView(sectionRef, { once: false });
+	const isInView = useInView(sectionRef, { once: true });
 
 	const handleNext = () => {
-		setCurrentIndex((prev) => {
-			return prev < shirts.length - 1 ? prev + 1 : 0;
-		});
+		setCurrentIndex((prev) => (prev + 1) % shirts.length);
 	};
 
 	const handlePrev = () => {
-		setCurrentIndex((prev) => {
-			return prev > 0 ? prev - 1 : shirts.length - 1;
-		});
+		setCurrentIndex((prev) => (prev - 1 + shirts.length) % shirts.length);
 	};
+
 
 	return (
 		<section
@@ -30,6 +27,7 @@ function Shirt() {
 			className="py-16 bg-light-teal relative overflow-hidden"
 		>
 			<div className="max-w-[90%] mx-auto flex gap-10 justify-between flex-col lg:flex-row">
+				{/* Left Section */}
 				<div className="lg:pt-10">
 					<div className="font-cousine mb-7 lg:mb-7 text-2xl lg:text-4xl">
 						<motion.h3
@@ -44,14 +42,13 @@ function Shirt() {
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ delay: 0.02, duration: 0.4 }}
 						>
-							0fficial TechStack;
-						</motion.h3>{" "}
+							Official TechStack;
+						</motion.h3>
 						<motion.h3
 							initial={{ opacity: 0, x: -30 }}
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ delay: 0.03, duration: 0.4 }}
 						>
-							{" "}
 							Devs2Devs shirt
 						</motion.h3>
 					</div>
@@ -66,47 +63,61 @@ function Shirt() {
 						</Button>
 					</motion.div>
 				</div>
-				<div className="w-full overflow-hidden lg:w-1/2 relative">
+
+				{/* Right Section */}
+				<div className="w-full lg:w-1/2 overflow-hidden p-4 relative">
 					<div
 						style={{ backgroundSize: "100% 100%" }}
-						className="w-full bg-shirtwhitebg min-h-[430px] lg:min-h-[550px]"
+						className="bg-shirtwhitebg"
 					>
-						{shirts.map((shirt, index) => (
-							<div
-								style={{
-									background: `url(${shirt}) no-repeat center`,
-									backgroundSize: "100% 100%",
-									transform: `translateX(${100 * (index - currentIndex)}%)`,
-								}}
-								className="absolute left-0 top-0 w-full h-full transition-transform duration-300 ease-in-out"
-								key={index}
-							></div>
-						))}
+						<motion.div
+							className="relative flex"
+							initial={{
+								opacity: 0,
+								transform: `translateX(-${currentIndex * 100}%)`,
+							}}
+							animate={{
+								opacity: 1,
+								transform: `translateX(-${currentIndex * 100}%)`,
+							}}
+							transition={{
+								duration: 0.5,
+								ease: "easeInOut",
+							}}
+						>
+							{shirts.map((shirt, index) => (
+								<motion.div
+									key={index}
+									className={`min-w-full bg-shirtwhitebg h-[430px] lg:h-[550px] translate-x-4 translate-y-4 ${
+										index !== currentIndex ? "invisible" : "visible"
+									}`}
+									style={{
+										background: `url(${shirt}) no-repeat center`,
+										backgroundSize: "100% 100%",
+									}}
+								/>
+							))}
+						</motion.div>
 					</div>
+
 					<div className="absolute left-1/2 -translate-x-1/2 bottom-10 lg:bottom-20 flex items-center">
-						<div>
-							<button
-								onClick={handlePrev}
-								aria-label="Previous button"
-								type="button"
-								className="bg-blue p-3 rounded-sm active:opacity-50"
-							>
-								<ChevronLeft />
-							</button>
-						</div>
-
+						<button
+							onClick={handlePrev}
+							aria-label="Previous button"
+							type="button"
+							className="bg-blue p-3 rounded-sm active:opacity-50"
+						>
+							<ChevronLeft />
+						</button>
 						<Dashed width="40" />
-
-						<div>
-							<button
-								aria-label="Next button"
-								type="button"
-								className="bg-blue p-3 rounded-sm active:opacity-50"
-								onClick={handleNext}
-							>
-								<ChevronRight />
-							</button>
-						</div>
+						<button
+							aria-label="Next button"
+							type="button"
+							className="bg-blue p-3 rounded-sm active:opacity-50"
+							onClick={handleNext}
+						>
+							<ChevronRight />
+						</button>
 					</div>
 				</div>
 			</div>

@@ -1,11 +1,16 @@
-import React from "react";
+import { useEffect } from "react";
 import { ArrowRight } from "../components/Svgs";
 
 function Contact() {
+	
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return (
 		<section>
 			<div className="max-w-[95%] font-cousine py-10 lg:py-16 lg:max-w-[90%] mx-auto">
-				<div className="text-white gap-5 flex flex-col md:flex-row">
+				<div className="text-white gap-5 flex flex-col md:flex-row md:items-center">
 					<h2 className="text-5xl lg:text-7xl font-cousine leading-[60px]">
 						Get in
 						<span className="flex items-center gap-4">

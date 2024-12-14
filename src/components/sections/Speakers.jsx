@@ -69,7 +69,7 @@ function Speakers() {
 					>
 						{speakers.map((speaker, index) => (
 							<div
-								className="snap-center min-h-[430px] lg:min-h-[330px] pb-8 lg:py-5 px-4 relative flex flex-col min-w-full md:min-w-44"
+								className="group snap-center min-h-[430px] lg:min-h-[330px] pb-8 lg:py-5 px-4 relative flex flex-col min-w-full md:min-w-44"
 								key={index}
 								style={{
 									background: `url(${speaker.image}) no-repeat center`,
@@ -78,10 +78,12 @@ function Speakers() {
 							>
 								<div className="mt-auto text-white z-10 relative p-2">
 									<motion.div
-										initial={{ width: 0 }}
-										animate={{ width: isInView ? 33 : 0 }}
+										initial={{ background: "transparent" }}
+										animate={{
+											background: isInView ? "#4311ff" : "transparent",
+										}}
 										transition={{ delay: 1, duration: 0.15 }}
-										className="absolute top-0 left-0 h-full bg-blue"
+										className="absolute top-0 left-0 h-full bg-blue w-full max-w-[33px] group-hover:max-w-full transition-width duration-300 ease-linear"
 									/>
 
 									<div className="font-cousine">

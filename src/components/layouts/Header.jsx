@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState, useRef } from "react";
 import logo from "../../assets/logo.png";
 import Button from "../Button";
 import { motion } from "framer-motion";
-import { MenuBar } from "../Svgs";
+import { MenuBar, CloseIcon } from "../Svgs";
 import { NavLink, Link, useLocation } from "react-router-dom";
 
 export default function Header() {
@@ -78,7 +78,7 @@ export default function Header() {
 							onClick={() => setOpenMenu((prev) => !prev)}
 							className="md:hidden"
 						>
-							<MenuBar />
+							{openMenu ? <CloseIcon /> : <MenuBar />}
 						</button>
 					</div>
 					{/* Mobile Nav */}

@@ -24,11 +24,11 @@ function Footer() {
 							<Button color="blue"> SUBSCRIBE</Button>
 						</form>
 					</div>
-					<div className="flex py-7 gap-3 flex-wrap items-center justify-between">
+					<div className="flex py-7 gap-3 flex-wrap items-center justify-center md:justify-between">
 						<div className="max-w-[200px] lg:max-w-[300px]">
 							<img src={logo} />
 						</div>
-						<ul className="flex flex-wrap gap-5 justify-normal">
+						<ul className="flex flex-wrap gap-5 justify-center md:justify-normal">
 							<li>
 								<a href="">Discord</a>
 							</li>
@@ -44,7 +44,7 @@ function Footer() {
 						</ul>
 					</div>
 				</div>
-				<div className="py-2 lg:py-3 text-center border-t border-grey">
+				<div className="py-4 lg:py-3 text-center border-t border-grey">
 					<p className="text-xs lg:text-sm">
 						{new Date().getFullYear()} &copy; TechStack. All right reserved
 					</p>
