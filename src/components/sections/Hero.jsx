@@ -13,7 +13,7 @@ export default function Hero() {
 		<section
 			ref={heroRef}
 			id="hero"
-			className={`bg-black text-white py-16 lg:py-20`}
+			className={`bg-blac text-white pt-[180px] pb-20  bg-hero bg-center bg-cover`}
 		>
 			<div className="max-w-[800px] space-y-10 mx-auto">
 				<div className="space-y-4 lg:space-y-7">

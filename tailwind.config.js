@@ -46,6 +46,7 @@ export default {
 				vvip: "url(./assets/ticket3.png)",
 				footer: "url(./assets/footer-large.png)",
 				footersm: "url(./assets/footer-mobile.png)",
+				hero: "url(./assets/hero-bg.png)",
 			},
 		},
 	},

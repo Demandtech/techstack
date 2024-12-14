@@ -1,5 +1,6 @@
 /** UI */
 export { default as Button } from "./Button";
+export { default as Loader } from "./PageLoader";
 
 /** SECTIONS */
 export { default as Hero } from "./sections/Hero";

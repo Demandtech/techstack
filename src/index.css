@@ -18,9 +18,12 @@ h1 {
 	}
 }
 
-html,
-* {
+html {
 	scroll-behavior: smooth;
+}
+
+body {
+	background-color: #111111;
 }
 
 .active::after {

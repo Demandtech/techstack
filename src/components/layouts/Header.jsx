@@ -1,15 +1,29 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 import logo from "../../assets/logo.png";
 import Button from "../Button";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { MenuBar, CloseIcon } from "../Svgs";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export default function Header() {
 	const [openMenu, setOpenMenu] = useState(false);
 	const [isSticky, setIsSticky] = useState(false);
 	const [scrollPos, setScrollPos] = useState(0);
 	const headerRef = useRef(null);
+	const isInView = useInView(headerRef);
+
+	const headerVariants = {
+		hidden: {
+			opacity: 0,
+			y: -40,
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+
+			transition: { duration: 0.005 },
+		},
+	};
 
 	const handleScroll = useCallback(() => {
 		if (openMenu) return;
@@ -39,8 +53,8 @@ export default function Header() {
 
 		if (openMenu) {
 			document.body.style.overflow = "hidden";
-			document.addEventListener("mousedown", handleOutsideClick); // For desktop
-			document.addEventListener("touchstart", handleOutsideClick); // For mobile
+			document.addEventListener("mousedown", handleOutsideClick);
+			document.addEventListener("touchstart", handleOutsideClick);
 		} else {
 			document.body.style.overflow = "";
 		}
@@ -51,12 +65,15 @@ export default function Header() {
 	}, [openMenu]);
 
 	return (
-		<header
+		<motion.header
+			initial="hidden"
+			variants={headerVariants}
+			animate={isInView ? "visible" : "hidden"}
 			ref={headerRef}
 			id="header"
 			className={`${
-				isSticky ? "sticky z-50" : "static"
-			} backdrop-blur-lg bg-transparent pt-5 md:pt-10 top-0 text-white w-full transition-all duration-300 ease-linear`}
+				isSticky ? "sticky z-50" : "absolute"
+			} backdrop-blur-lg bg-transparent pt-5 md:pt-10 pb-5 top-0 text-white w-full transition-all duration-300 ease-linear`}
 		>
 			<div
 				style={{
@@ -69,7 +86,7 @@ export default function Header() {
 						style={{
 							backgroundSize: "100% 100%",
 						}}
-						className={`py-5  px-6 md:px-0 md:py-0 flex justify-between items-center bg-headersm md:bg-none`}
+						className={`py-5  px-10 md:px-0 md:py-0 flex justify-between items-center bg-headersm md:bg-none`}
 					>
 						<Link to="/">
 							<img className="w-[150px]" src={logo} />
@@ -128,6 +145,6 @@ export default function Header() {
 					</nav>
 				</div>
 			</div>
-		</header>
+		</motion.header>
 	);
 }
