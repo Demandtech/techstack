@@ -78,9 +78,9 @@ function Speakers() {
 							>
 								<div className="mt-auto text-white z-10 relative p-2">
 									<motion.div
-										initial={{ background: "transparent" }}
+										initial={{ opacity: 0 }}
 										animate={{
-											background: isInView ? "#4311ff" : "transparent",
+											opacity: isInView ? 1 : 0,
 										}}
 										transition={{ delay: 1, duration: 0.15 }}
 										className="absolute top-0 left-0 h-full bg-blue w-full max-w-[33px] group-hover:max-w-full transition-width duration-300 ease-linear"

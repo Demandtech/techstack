@@ -7,8 +7,6 @@ import { useEffect, useState } from "react";
 function App() {
 	const [isMounted, setIsMounted] = useState(false);
 
-	console.log(isMounted);
-
 	useEffect(() => {
 		const timeoutId = setTimeout(() => {
 			setIsMounted(true);
